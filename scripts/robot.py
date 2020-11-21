@@ -12,7 +12,7 @@ class Robot:
         self.x_t=x_t
         self.y_t=y_t
         self.goal_flag=False
-        self.k=10
+        self.k=1
         self.vel_x=None
         self.vel_y=None
 
