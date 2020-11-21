@@ -11,6 +11,7 @@ class Robot:
         self.y=y_init
         self.x_t=x_t
         self.y_t=y_t
+        self.goal_flag=False
         self.k=10
         self.vel_x=None
         self.vel_y=None

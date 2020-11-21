@@ -13,7 +13,13 @@ def robot_simulator():
     rospy.init_node('robot_cmd_vel', anonymous=True)
     rospy.Subscriber("/odom", Odometry, state_update_callback)
     while not rospy.is_shutdown():
-        robot_control()
+        if (robot.goal_flag):
+            create_target():
+        else:    
+            robot_control():
+
+def create_target():
+    
 
 def robot_control():
     vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
@@ -30,8 +36,6 @@ def state_update_callback(odom_data):
     robot.update_state(robot_pose.position.x,robot_pose.position.y)
     pos_info = "subscribe odom t= %s" % rospy.get_time()+" position=[%f, %f]" %(robot.x,robot.y)
     rospy.loginfo(pos_info)
-
-
 
 
 if __name__ == '__main__':
