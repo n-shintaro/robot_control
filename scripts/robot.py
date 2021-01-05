@@ -1,6 +1,10 @@
 # coding:utf-8
 #! /usr/bin/env python
 
+"""
+This file define the class "Robot"
+"""
+
 import rospy
 import numpy as np
 import math
@@ -36,6 +40,8 @@ class Robot:
 
     def __init__(self,x_init,y_init,x_t,y_t):
         """
+        Parameters
+        -----------
         (x,y): float
         the position of robot
 
