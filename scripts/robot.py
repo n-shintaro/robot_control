@@ -5,51 +5,52 @@ import rospy
 import numpy as np
 import math
 
-"""
-A class used to represent an Robot
-
-...
-Attributes
-----------
-(x,y): float 
-    the position of robot
-
-(x_t,y_t): float 
-    target position of robot
-
-(vel_x, vel_y) : float
-    velocity of robot
-
-goal_flag: bool
-    True: the robot reached the target position
-
-k:constant of proportionality
-
-
-Methods
--------
-update_state
-    Update the robot position and velocity.
-"""
-
 class Robot:
     """
-    Parameters
-    ----------
-    name : str
+    A class used to represent an Robot
+
     ...
-    The name of the animal
-    sound : str
     Attributes
-    The sound the animal makes
     ----------
-    num_legs : int, optional
-    says_str : str
-    The number of legs the animal (default is 4)
-    a formatted string to print out what the animal says
+    (x,y): float
+        the position of robot
+
+    (x_t,y_t): float
+        target position of robot
+
+    (vel_x, vel_y) : float
+        velocity of robot
+
+    goal_flag: bool
+        True: the robot reached the target position
+
+    k:constant of proportionality
+
+
+    Methods
+    -------
+    update_state
+        Update the robot position and velocity.
     """
 
+
     def __init__(self,x_init,y_init,x_t,y_t):
+        """
+        (x,y): float
+        the position of robot
+
+        (x_t,y_t): float
+        target position of robot
+
+        (vel_x, vel_y) : float
+        velocity of robot
+
+        goal_flag: bool
+            True: the robot is reaching the target position
+
+        k: float
+            constant of proportionality (default is 1.0)
+        """
         self.x=x_init
         self.y=y_init
         self.x_t=x_t
@@ -60,24 +61,22 @@ class Robot:
         self.k=1.0
 
     def update_state(self,x,y):
-         """
-        Returns sum of x and y
+        """
+        Update the state of robot (position and velocity)
+        new velocity x depends on the difference between the target x_t and the robot position x
+        new velocity y depends on the difference between the target y_t and the robot position y
 
         Parameters:
         ----------
-        x : int
-            operand1 of addition
+        x : float
+            the component of position x of the robot
         y : int
-            operand2 of addition
+            the component of position y of the robot
 
         Returns:
         ----------
-        int
-            sum of x and y
+        None
         """
-        
-        print('x='+str(x))
-        print('y='+str(y))
         self.x=x
         self.y=y
         self.vel_x=self.k*(self.x_t-self.x)
