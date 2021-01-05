@@ -66,7 +66,12 @@ The robot's behavior:
     - float32 x
     - float32 y
 
-    
+
+
+
+#### rqt_graph
+
+![rosgraph](rosgraph.png)
 
 ## Installation
 
@@ -96,8 +101,8 @@ Install this package and the other necessary package into your workspace.
 
 ```
 cd catkin_workspace/src
-git clone git@github.com:n-shintaro/robot_control.git
-git clone git@github.com:n-shintaro/assignment1.git
+git clone https://github.com/n-shintaro/robot_control.git
+git clone https://github.com/CarmineD8/assignment1.git
 cd ../
 catkin_make
 ```
@@ -113,7 +118,7 @@ roscore &
 This package requires controlling a holonomic robot in a 2d space with a simple 2d simulator, Stage. The simulator can be launched by executing the command.
 
 ```
-ros stage_ros stageros $(rospackfind assignment1)/world/exercise.world
+rosrun stage_ros stageros $(rospack find assignment1)/world/exercise.world
 ```
 
 
@@ -132,3 +137,8 @@ To run the node (target_server),
 rosrun robot_control target_server.py
 ```
 
+
+
+
+
+##
