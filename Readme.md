@@ -68,10 +68,21 @@ The robot's behavior:
 
 
 
+#### Computational graph of the system
 
-#### rqt_graph
+- robot simulator
+  - subscribe /odom from node "stageros", and depending on the current position, decide the velocity and publish it as /cmd_vel
+  - When the robot reach the goal, this node send the service to the node "target_server"and receive the robot new target position.
+- target_server
+  - "target_server" get service from "robot_simulator" and send this node the new target position. 
+
+
 
 ![rosgraph](rosgraph.png)
+
+
+
+#### 
 
 ## Installation
 
@@ -105,6 +116,7 @@ git clone https://github.com/n-shintaro/robot_control.git
 git clone https://github.com/CarmineD8/assignment1.git
 cd ../
 catkin_make
+rospack profile
 ```
 
 
@@ -136,9 +148,3 @@ To run the node (target_server),
 ```
 rosrun robot_control target_server.py
 ```
-
-
-
-
-
-##
